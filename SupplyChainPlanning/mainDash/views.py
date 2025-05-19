@@ -13,6 +13,9 @@ import io, requests
 import urllib, base64
 from datetime import datetime, timedelta, timezone
 import calendar
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from mainDash.static.mainDash.color_data import industry_info, naics_industry
 from mainDash.static.mainDash.commodity_data import commodity_series_mapping
@@ -166,7 +169,7 @@ def detail(request):
     # Get commodity data
    
     # Replace with your FRED API key
-    api_key = "0eadee4ff6db19aa641e8648fd914476"
+    api_key = FRED_API_KEY
     image_urls = []
 
     for i in selected_items.values().all() :
