@@ -1,6 +1,7 @@
 # Ignore data files whice are large and cause problems
 *.json
 *.db
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
