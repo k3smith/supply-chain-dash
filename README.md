@@ -31,6 +31,10 @@ python utility\data_gen_suppliers.py
 python utility\data_mappers_parts.py
 ```
 
+## Environment File
+Create a .env file at the root directory with a FRED api key from [Federal Reserve Bank of St. Louis - FRED](https://fred.stlouisfed.org/docs/api/api_key.html)
+FRED_API_KEY=**Your FRED API key**
+
 ## Run Django
 **If this is the first time running the Django app, follow the steps in the "To Migrate" section below first.**
 

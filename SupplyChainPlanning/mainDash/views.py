@@ -13,6 +13,7 @@ import io, requests
 import urllib, base64
 from datetime import datetime, timedelta, timezone
 import calendar
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -169,7 +170,7 @@ def detail(request):
     # Get commodity data
    
     # Replace with your FRED API key
-    api_key = FRED_API_KEY
+    api_key = os.environ.get("FRED_API_KEY")
     image_urls = []
 
     for i in selected_items.values().all() :
