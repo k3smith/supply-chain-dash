@@ -32,7 +32,8 @@ python utility\data_mappers_parts.py
 ```
 
 ## Run Django
-** If this is the first time running the Django app, follow the steps in the "To Migrate" section below first. **
+**If this is the first time running the Django app, follow the steps in the "To Migrate" section below first.**
+
 Once `pip` has finished downloading the dependencies:
 ```sh
 (.venv)$ cd SupplyChainPlanning
