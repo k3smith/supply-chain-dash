@@ -187,27 +187,30 @@ def detail(request):
         data = response.json()
 
         # Extract relevant data points
-        observations = data["observations"]
-        dates = np.asarray([o['date'] for o in observations], dtype='datetime64[s]')
-        values = [o['value'] for o in observations]
-        values = ['nan' if v == '.' else v for v in values]
-        values = np.asarray(values, dtype=float)
+        if "observations" not in data or not data["observations"]:
+            continue
+        else :
+            observations = data["observations"]
+            dates = np.asarray([o['date'] for o in observations], dtype='datetime64[s]')
+            values = [o['value'] for o in observations]
+            values = ['nan' if v == '.' else v for v in values]
+            values = np.asarray(values, dtype=float)
 
-        # Create a line chart
-        #plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
-        fig, ax = plt.subplots()
-        sns.scatterplot(x = dates, y = values)
-        plt.xlabel('Time')
-        plt.ylabel('Producer Price Index')
-        plt.title(('Producer price index for ' + i['item_description']).title())
-        plt.xticks(rotation=45)
-        fig.set_tight_layout(True)
+            # Create a line chart
+            #plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
+            fig, ax = plt.subplots()
+            sns.scatterplot(x = dates, y = values)
+            plt.xlabel('Time')
+            plt.ylabel('Producer Price Index')
+            plt.title(('Producer price index for ' + i['item_description']).title())
+            plt.xticks(rotation=45)
+            fig.set_tight_layout(True)
 
-        # Save the chart to a buffer
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png')
-        buffer.seek(0)
-        image_urls.append(base64.b64encode(buffer.read()).decode())
+            # Save the chart to a buffer
+            buffer = io.BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            image_urls.append(base64.b64encode(buffer.read()).decode())
 
     context = {
         "selected_items": selected_items,
